@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_03_084852) do
+ActiveRecord::Schema.define(version: 2020_02_03_114937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "draws", force: :cascade do |t|
+    t.bigint "ticket_id"
+    t.bigint "user_ticket_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ticket_id"], name: "index_draws_on_ticket_id"
+    t.index ["user_ticket_id"], name: "index_draws_on_user_ticket_id"
+  end
 
   create_table "tickets", force: :cascade do |t|
     t.string "title"
@@ -42,6 +51,8 @@ ActiveRecord::Schema.define(version: 2020_02_03_084852) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "draws", "tickets"
+  add_foreign_key "draws", "user_tickets"
   add_foreign_key "user_tickets", "tickets"
   add_foreign_key "user_tickets", "users"
 end
