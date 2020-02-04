@@ -31,3 +31,18 @@
 
 en:
   hello: "Hello world"
+  user_ticket:
+    create: 'UserTicket was successfully created.'
+  common:
+    buy: 'buy'
+    purchase_ticket: 'Purchase ticket'
+    logout: 'Logout'
+    welcome: 'Welcome'
+    win: 'win'
+    loss: 'loss'
+  table:
+    title: 'Title'
+    ticket: 'Ticket'
+    performed_at: 'Performed At'
+    status: 'Status'
+
