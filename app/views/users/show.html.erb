@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Welcome</strong>
+  <%= current_user.email %>
+</p>
+
+<h1>Draws List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Ticket</th>
+      <th>Performed At</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @draw_participants.each do |draw_participant| %>
+      <tr>
+        <td><%= draw_participant.draw.title %></td>
+        <td><%= draw_participant.user_ticket.ticket.title %></td>
+        <td><%= draw_participant.draw.created_at %></td>
+        <td><%= draw_participant.user_ticket.is_draw_winner?(draw_participant.draw) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<p><%= link_to('Purchase ticket', new_users_user_tickets_path, method: :get) %></p>
+<p><%= link_to('Logout', destroy_user_session_path, method: :delete) %></p>

@@ -1,0 +1,23 @@
+<h1>Purchase Ticket</h1>
+
+<style type="text/css">
+  .w1 {
+    width: 300px;
+    float: left;
+  }
+
+  .w1 div {
+    margin-bottom: 3px
+  }
+</style>
+
+<div>
+  <% Ticket.all.each do |ticket| %>
+    <div class="w1">
+      <div><%= ticket.title %></div>
+      <div><%= ticket.winning_amount.to_s %></div>
+      <div> <%= button_to "buy" , users_user_tickets_path, method: :post, params: {ticket_id: ticket.id} %> </div>
+    </div>
+  <% end %>
+<div style="clear:both;"></div>
+</div>
