@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_02_03_120016) do
     t.bigint "user_ticket_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["draw_id", "user_ticket_id"], name: "index_draw_participants_on_draw_id_and_user_ticket_id", unique: true
     t.index ["draw_id"], name: "index_draw_participants_on_draw_id"
     t.index ["user_ticket_id"], name: "index_draw_participants_on_user_ticket_id"
   end
@@ -32,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_02_03_120016) do
     t.datetime "updated_at", null: false
     t.index ["ticket_id"], name: "index_draws_on_ticket_id"
     t.index ["title"], name: "index_draws_on_title", unique: true
-    t.index ["winner_user_ticket_id"], name: "index_draws_on_winner_user_ticket_id"
+    t.index ["winner_user_ticket_id"], name: "index_draws_on_winner_user_ticket_id", unique: true
   end
 
   create_table "tickets", force: :cascade do |t|

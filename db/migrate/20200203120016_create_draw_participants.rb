@@ -6,5 +6,6 @@ class CreateDrawParticipants < ActiveRecord::Migration[5.2]
 
       t.timestamps null: false
     end
+    add_index :draw_participants, [:draw_id, :user_ticket_id], unique: true
   end
 end
