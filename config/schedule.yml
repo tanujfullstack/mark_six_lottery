@@ -1,0 +1,3 @@
+play_draw:
+  cron: "* * * * *"
+  class: "PlayDraw"
