@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
 
-  resource :users, only: [:show] do
-    resource :user_tickets, only: [:new, :create]
+  resources :users, only: [:show] do
+    resources :user_tickets, only: [:new, :create]
   end
 end

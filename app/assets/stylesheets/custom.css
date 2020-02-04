@@ -1,0 +1,8 @@
+.ticket {
+  float: left;
+  width: 300px;
+}
+
+.ticket div {
+  margin-bottom: 3px
+}

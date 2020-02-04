@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Welcome</strong>
+  <strong><%= I18n.t('common.welcome') %></strong>
   <%= current_user.email %>
 </p>
 
@@ -10,10 +10,10 @@
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Ticket</th>
-      <th>Performed At</th>
-      <th>Status</th>
+      <th><%= I18n.t('table.title') %></th>
+      <th><%= I18n.t('table.ticket') %></th>
+      <th><%= I18n.t('table.performed_at') %></th>
+      <th><%= I18n.t('table.status') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,12 +24,13 @@
         <td><%= draw_participant.draw.title %></td>
         <td><%= draw_participant.user_ticket.ticket.title %></td>
         <td><%= draw_participant.draw.created_at %></td>
-        <td><%= draw_participant.user_ticket.is_draw_winner?(draw_participant.draw) %></td>
+        <td><%= ticket_status(draw_participant.user_ticket.is_draw_winner?(draw_participant.draw)) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= paginate @draw_participants %>
 
 
-<p><%= link_to('Purchase ticket', new_users_user_tickets_path, method: :get) %></p>
-<p><%= link_to('Logout', destroy_user_session_path, method: :delete) %></p>
+<p><%= link_to(I18n.t('common.purchase_ticket'), new_user_user_ticket_path(current_user), method: :get) %></p>
+<p><%= link_to(I18n.t('common.logout'), destroy_user_session_path, method: :delete) %></p>
